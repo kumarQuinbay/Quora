@@ -17,13 +17,13 @@ public class Comment {
     private List<Comment> commentList;
     private boolean approved;
 
-    private String userId;
+    private User userId;
 
-    public String getUserId() {
+    public User getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 
