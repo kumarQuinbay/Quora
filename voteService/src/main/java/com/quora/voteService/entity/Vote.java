@@ -11,6 +11,7 @@ import java.util.List;
 public class Vote {
     @Id
     private String id;
+    private String userId;
     private List<String> upVotes;
     private List<String> downVotes;
 }

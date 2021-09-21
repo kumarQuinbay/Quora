@@ -5,6 +5,7 @@ import com.quora.userMockMongo.service.UserMockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/userMock")
 public class UserMockController {
@@ -35,6 +36,4 @@ public class UserMockController {
     public void delete(@PathVariable(name = "id") String id){
         userMockService.delete(id);
     }
-
-
 }

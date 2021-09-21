@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
+@Data
 @Document
 public class Answer {
     @Id
@@ -19,6 +19,7 @@ public class Answer {
     private List<Answer> comments;
     private Boolean isApproved;
     private Boolean isComment;
+<<<<<<< HEAD
 
     private VoteDto votes;
 
@@ -86,4 +87,6 @@ public class Answer {
     public void setIsComment(Boolean isComment) {
         this.isComment = isComment;
     }
+=======
+>>>>>>> c657475c3593ad4cf5db34ff2106f56e40856e8e
 }
