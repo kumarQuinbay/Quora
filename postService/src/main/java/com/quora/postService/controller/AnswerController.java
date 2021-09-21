@@ -5,6 +5,8 @@ import com.quora.postService.service.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 @RestController
 @RequestMapping("/answer")
 public class AnswerController {
@@ -22,6 +24,9 @@ public class AnswerController {
 
     @PostMapping
     public Answer save(@RequestBody Answer answer){
+
+
+        answer.setTimestamp(LocalDateTime.now());
         return answerService.save(answer);
     }
 

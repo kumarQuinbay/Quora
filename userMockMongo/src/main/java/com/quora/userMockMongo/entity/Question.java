@@ -1,8 +1,8 @@
-package com.quora.postService.Entity;
+package com.quora.userMockMongo.entity;
 
-import com.quora.postService.Entity.dto.Category;
-import com.quora.postService.Entity.dto.Type;
-import lombok.Data;
+
+import com.quora.userMockMongo.entity.dto.Category;
+import com.quora.userMockMongo.entity.dto.Type;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
