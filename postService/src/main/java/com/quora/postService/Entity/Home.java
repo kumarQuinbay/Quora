@@ -2,6 +2,7 @@ package com.quora.postService.Entity;
 
 import com.quora.postService.Entity.dto.Category;
 import com.quora.postService.Entity.dto.Type;
+import com.quora.postService.Entity.dto.VoteDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,10 +14,19 @@ import java.util.List;
 public class Home {
     @Id
     private String id;
-
     private List<Question> questions;
     private LocalDateTime timeStamp;
     private String userId;
+    private String displayName;
+
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
 
     public String getUserId() {
         return userId;

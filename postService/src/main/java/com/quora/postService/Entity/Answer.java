@@ -1,5 +1,6 @@
 package com.quora.postService.Entity;
 
+import com.quora.postService.Entity.dto.VoteDto;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,6 +19,16 @@ public class Answer {
     private List<Answer> comments;
     private Boolean isApproved;
     private Boolean isComment;
+
+    private VoteDto votes;
+
+    public VoteDto getVotes() {
+        return votes;
+    }
+
+    public void setVotes(VoteDto votes) {
+        this.votes = votes;
+    }
 
 
     public String getId() {
