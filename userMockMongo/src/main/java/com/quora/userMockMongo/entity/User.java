@@ -1,6 +1,7 @@
 package com.quora.userMockMongo.entity;
 
 import com.quora.userMockMongo.entity.dto.Category;
+import com.quora.userMockMongo.entity.dto.Type;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,4 +17,5 @@ public class User {
     @Id
     private String emailId;
     private List<Category> areaOfInterests;
+    private Type type;
 }

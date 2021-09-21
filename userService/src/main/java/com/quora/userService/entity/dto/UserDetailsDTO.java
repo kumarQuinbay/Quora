@@ -1,28 +1,25 @@
-package com.quora.userService.entity;
+package com.quora.userService.entity.dto;
 
-
-import com.quora.userService.entity.dto.Level;
-import com.quora.userService.entity.dto.QuestionDTO;
-import com.quora.userService.entity.dto.Type;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document
 @Data
-public class User {
-    @Id
+public class UserDetailsDTO {
+    private String firstName;
+    private String lastName;
+    private String userName;
     private String id;
     private String displayName;
-    private String userName;
     private Type type;
     private List<String> followers;
     private List<String> following;
     private List<QuestionDTO> questions;
     private List<String> pendingRequests;
     private int score;
+    private List<Category> areaOfInterests;
     private Level level;
+    private int followersCount;
+    private int followingCount;
     private String imageURL;
 }

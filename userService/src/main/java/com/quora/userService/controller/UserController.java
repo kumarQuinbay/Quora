@@ -3,18 +3,23 @@ package com.quora.userService.controller;
 import com.quora.userService.entity.User;
 import com.quora.userService.entity.dto.QuestionDTO;
 import com.quora.userService.entity.dto.Type;
+import com.quora.userService.entity.dto.UserCIDTO;
+import com.quora.userService.entity.dto.UserDetailsDTO;
 import com.quora.userService.service.impl.UserServiceImpl;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/user")
 public class UserController {
     private UserServiceImpl userService;
-
+    RestTemplate restTemplate = new RestTemplate();
     @Autowired
     public void setUserService(UserServiceImpl userService) {
         this.userService = userService;
@@ -22,7 +27,21 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User get(@PathVariable(name = "id") String id){
+
         return userService.get(id);
+    }
+
+    @GetMapping("/getProfile/{id}")
+    public UserDetailsDTO getProfile(@PathVariable(name = "id") String id){
+        UserCIDTO userCIDTO = restTemplate.getForObject("http://127.0.0.1:6400/userMock/"+id, UserCIDTO.class);
+        User user = userService.get(id);
+        UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
+        assert userCIDTO != null;
+        BeanUtils.copyProperties(userCIDTO, userDetailsDTO);
+        BeanUtils.copyProperties(user, userDetailsDTO);
+        userDetailsDTO.setFollowersCount(userDetailsDTO.getFollowers().size());
+        userDetailsDTO.setFollowingCount(userDetailsDTO.getFollowing().size());
+        return userDetailsDTO;
     }
 
     @GetMapping("/type/{id}")
