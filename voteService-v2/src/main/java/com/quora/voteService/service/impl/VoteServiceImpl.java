@@ -6,6 +6,8 @@ import com.quora.voteService.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class VoteServiceImpl implements VoteService {
 
@@ -34,5 +36,10 @@ public class VoteServiceImpl implements VoteService {
     @Override
     public void delete(String id) {
         voteRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Vote> findByAnswerId(String answerId) {
+        return voteRepository.findByAnswerId(answerId);
     }
 }
